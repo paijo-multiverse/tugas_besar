@@ -4,7 +4,6 @@ import 'package:carousel_slider/carousel_slider.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
-import 'package:tugas_besar/const/appcolors.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class ProductDetails extends StatefulWidget {
@@ -20,11 +19,7 @@ class _ProductDetailsState extends State<ProductDetails> {
     var currentUser = auth.currentUser;
     CollectionReference collectionRef =
         FirebaseFirestore.instance.collection("users-cart-items");
-    return collectionRef
-        .doc(currentUser!.email)
-        .collection("items")
-        .doc()
-        .set({
+    return collectionRef.doc(currentUser!.email).collection("items").doc().set({
       "name": widget._product["product-name"],
       "price": widget._product["product-price"],
       "images": widget._product["product-img"],
@@ -36,11 +31,7 @@ class _ProductDetailsState extends State<ProductDetails> {
     var currentUser = auth.currentUser;
     CollectionReference collectionRef =
         FirebaseFirestore.instance.collection("users-favourite-items");
-    return collectionRef
-        .doc(currentUser!.email)
-        .collection("items")
-        .doc()
-        .set({
+    return collectionRef.doc(currentUser!.email).collection("items").doc().set({
       "name": widget._product["product-name"],
       "price": widget._product["product-price"],
       "images": widget._product["product-img"],
@@ -56,7 +47,7 @@ class _ProductDetailsState extends State<ProductDetails> {
         leading: Padding(
           padding: const EdgeInsets.all(8.0),
           child: CircleAvatar(
-            backgroundColor: AppColors.deep_orange,
+            backgroundColor: const Color.fromARGB(255, 22, 20, 141),
             child: IconButton(
                 onPressed: () => Navigator.pop(context),
                 icon: const Icon(
@@ -141,7 +132,10 @@ class _ProductDetailsState extends State<ProductDetails> {
             Text(
               "\$ ${widget._product['product-price'].toString()}",
               style: const TextStyle(
-                  fontWeight: FontWeight.bold, fontSize: 30, color: Colors.red),
+                fontWeight: FontWeight.bold,
+                fontSize: 30,
+                color: const Color.fromARGB(255, 22, 20, 141),
+              ),
             ),
             const Divider(),
             SizedBox(
@@ -154,7 +148,7 @@ class _ProductDetailsState extends State<ProductDetails> {
                   style: TextStyle(color: Colors.white, fontSize: 18.sp),
                 ),
                 style: ElevatedButton.styleFrom(
-                  backgroundColor: AppColors.deep_orange,
+                  backgroundColor: const Color.fromARGB(255, 22, 20, 141),
                   elevation: 3,
                 ),
               ),

@@ -34,7 +34,7 @@ class _SplashScreenState extends State<SplashScreen> {
             crossAxisAlignment: CrossAxisAlignment.center,
             children: [
               Text(
-                "Nike Shoes",
+                "Mini Shop",
                 style: TextStyle(
                     color: Colors.white,
                     fontWeight: FontWeight.bold,

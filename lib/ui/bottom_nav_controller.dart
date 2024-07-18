@@ -28,7 +28,7 @@ class _BottomNavControllerState extends State<BottomNavController> {
         backgroundColor: Colors.transparent,
         elevation: 0,
         title: const Text(
-          "E-Commerce",
+          "Mini Shop",
           style: TextStyle(color: Colors.black),
         ),
         centerTitle: true,

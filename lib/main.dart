@@ -24,7 +24,7 @@ class MyApp extends StatelessWidget {
       builder: (context, child) {
         return MaterialApp(
           debugShowCheckedModeBanner: false,
-          title: 'Nike Shoes',
+          title: 'Mini Shop',
           theme: ThemeData(
             primarySwatch: Colors.blue,
           ),

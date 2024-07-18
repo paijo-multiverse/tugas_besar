@@ -91,7 +91,6 @@ class _HomeState extends State<Home> {
             AspectRatio(
               aspectRatio: 3.5,
               child: CarouselSlider(
-                
                 items: _carouselImages
                     .map((item) => Padding(
                           padding: const EdgeInsets.only(left: 3, right: 3),
@@ -123,15 +122,14 @@ class _HomeState extends State<Home> {
               height: 10.h,
             ),
             DotsIndicator(
-              dotsCount:
-                  _carouselImages.isEmpty ? 1 : _carouselImages.length,
+              dotsCount: _carouselImages.isEmpty ? 1 : _carouselImages.length,
               position: _dotPosition,
-              decorator: DotsDecorator(
-                activeColor: AppColors.deep_orange,
-                color: AppColors.deep_orange.withOpacity(0.5),
-                spacing: const EdgeInsets.all(2),
-                activeSize: const Size(8, 8),
-                size: const Size(6, 6),
+              decorator: const DotsDecorator(
+                activeColor: Color.fromARGB(255, 22, 20, 141),
+                color: Color.fromARGB(255, 22, 20, 141),
+                spacing: EdgeInsets.all(2),
+                activeSize: Size(8, 8),
+                size: Size(6, 6),
               ),
             ),
             SizedBox(
@@ -141,7 +139,7 @@ class _HomeState extends State<Home> {
               child: GridView.builder(
                 scrollDirection: Axis.horizontal,
                 itemCount: _products.length,
-                gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+                gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
                   crossAxisCount: 2,
                   childAspectRatio: 2 / 2.5,
                 ),
@@ -150,8 +148,7 @@ class _HomeState extends State<Home> {
                     onTap: () => Navigator.push(
                         context,
                         MaterialPageRoute(
-                            builder: (_) =>
-                                ProductDetails(_products[index]))),
+                            builder: (_) => ProductDetails(_products[index]))),
                     child: Card(
                       elevation: 3,
                       child: Column(
@@ -167,8 +164,7 @@ class _HomeState extends State<Home> {
                             ),
                           ),
                           Text("${_products[index]["product-name"]}"),
-                          Text(
-                              _products[index]["product-price"].toString()),
+                          Text(_products[index]["product-price"].toString()),
                         ],
                       ),
                     ),
