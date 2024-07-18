@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:tugas_besar/const/appcolors.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 Widget customButton(String buttonText, onPressed) {
@@ -9,13 +8,13 @@ Widget customButton(String buttonText, onPressed) {
     child: ElevatedButton(
       onPressed: onPressed,
       style: ElevatedButton.styleFrom(
-        backgroundColor:
-            AppColors.deep_orange, // Use backgroundColor instead of primary
+        backgroundColor: const Color.fromARGB(
+            255, 22, 20, 141), // Use backgroundColor instead of primary
         elevation: 3,
       ),
       child: Text(
         buttonText,
-        style: TextStyle(color: Colors.white, fontSize: 18.sp),
+        style: TextStyle(color: Colors.white, fontSize: 15.sp),
       ),
     ),
   );

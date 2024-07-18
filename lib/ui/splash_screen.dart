@@ -16,13 +16,17 @@ class SplashScreen extends StatefulWidget {
 class _SplashScreenState extends State<SplashScreen> {
   @override
   void initState() {
-    Timer(const Duration(seconds: 3),()=>Navigator.push(context, CupertinoPageRoute(builder: (_)=>const LoginScreen())));
+    Timer(
+        const Duration(seconds: 3),
+        () => Navigator.push(
+            context, CupertinoPageRoute(builder: (_) => const LoginScreen())));
     super.initState();
   }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: AppColors.deep_orange,
+      backgroundColor: const Color.fromARGB(255, 22, 20, 141),
       body: SafeArea(
         child: Center(
           child: Column(
@@ -30,7 +34,7 @@ class _SplashScreenState extends State<SplashScreen> {
             crossAxisAlignment: CrossAxisAlignment.center,
             children: [
               Text(
-                "E-Commerce",
+                "Nike Shoes",
                 style: TextStyle(
                     color: Colors.white,
                     fontWeight: FontWeight.bold,

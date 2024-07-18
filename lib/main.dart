@@ -1,5 +1,6 @@
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
+import 'package:tugas_besar/ui/bottom_nav_controller.dart';
 import 'package:tugas_besar/ui/splash_screen.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'firebase_options.dart';
@@ -24,7 +25,7 @@ class MyApp extends StatelessWidget {
       builder: (context, child) {
         return MaterialApp(
           debugShowCheckedModeBanner: false,
-          title: 'Flutter E-Commerce',
+          title: 'Nike Shoes',
           theme: ThemeData(
             primarySwatch: Colors.blue,
           ),

@@ -22,15 +22,15 @@ class _RegistrationScreenState extends State<RegistrationScreen> {
 
   signUp() async {
     try {
-      UserCredential userCredential = await FirebaseAuth.instance.createUserWithEmailAndPassword(
-          email: _emailController.text,
-          password: _passwordController.text
-      );
+      UserCredential userCredential = await FirebaseAuth.instance
+          .createUserWithEmailAndPassword(
+              email: _emailController.text, password: _passwordController.text);
       var authCredential = userCredential.user;
       // ignore: avoid_print
       print(authCredential!.uid);
       if (authCredential.uid.isNotEmpty) {
-        Navigator.push(context, CupertinoPageRoute(builder: (_) => const UserForm()));
+        Navigator.push(
+            context, CupertinoPageRoute(builder: (_) => const UserForm()));
       } else {
         Fluttertoast.showToast(msg: "Something is wrong");
       }
@@ -38,7 +38,8 @@ class _RegistrationScreenState extends State<RegistrationScreen> {
       if (e.code == 'weak-password') {
         Fluttertoast.showToast(msg: "The password provided is too weak.");
       } else if (e.code == 'email-already-in-use') {
-        Fluttertoast.showToast(msg: "The account already exists for that email.");
+        Fluttertoast.showToast(
+            msg: "The account already exists for that email.");
       }
     } catch (e) {
       // ignore: avoid_print
@@ -49,7 +50,7 @@ class _RegistrationScreenState extends State<RegistrationScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: AppColors.deep_orange,
+      backgroundColor: const Color.fromARGB(255, 22, 20, 141),
       body: SafeArea(
         child: Column(
           children: [
@@ -70,7 +71,7 @@ class _RegistrationScreenState extends State<RegistrationScreen> {
                       ),
                     ),
                     Text(
-                      "Sign Up",
+                      "Daftar",
                       style: TextStyle(fontSize: 22.sp, color: Colors.white),
                     ),
                   ],
@@ -98,12 +99,14 @@ class _RegistrationScreenState extends State<RegistrationScreen> {
                           height: 20.h,
                         ),
                         Text(
-                          "Welcome Buddy!",
+                          "Selamat Datang!",
                           style: TextStyle(
-                              fontSize: 22.sp, color: AppColors.deep_orange),
+                            fontSize: 22.sp,
+                            color: const Color.fromARGB(255, 22, 20, 141),
+                          ),
                         ),
                         Text(
-                          "Glad to see you back my buddy.",
+                          "Sepatu Berkualitas Balikpapan",
                           style: TextStyle(
                             fontSize: 14.sp,
                             color: const Color(0xFFBBBBBB),
@@ -118,7 +121,7 @@ class _RegistrationScreenState extends State<RegistrationScreen> {
                               height: 48.h,
                               width: 41.w,
                               decoration: BoxDecoration(
-                                  color: AppColors.deep_orange,
+                                  color: const Color.fromARGB(255, 22, 20, 141),
                                   borderRadius: BorderRadius.circular(12.r)),
                               child: Center(
                                 child: Icon(
@@ -135,15 +138,16 @@ class _RegistrationScreenState extends State<RegistrationScreen> {
                               child: TextField(
                                 controller: _emailController,
                                 decoration: InputDecoration(
-                                  hintText: "thed9954@gmail.com",
+                                  hintText: "user@gmail.com",
                                   hintStyle: TextStyle(
                                     fontSize: 14.sp,
                                     color: const Color(0xFF414041),
                                   ),
-                                  labelText: 'EMAIL',
+                                  labelText: 'E-mail',
                                   labelStyle: TextStyle(
                                     fontSize: 15.sp,
-                                    color: AppColors.deep_orange,
+                                    color:
+                                        const Color.fromARGB(255, 22, 20, 141),
                                   ),
                                 ),
                               ),
@@ -159,7 +163,7 @@ class _RegistrationScreenState extends State<RegistrationScreen> {
                               height: 48.h,
                               width: 41.w,
                               decoration: BoxDecoration(
-                                  color: AppColors.deep_orange,
+                                  color: const Color.fromARGB(255, 22, 20, 141),
                                   borderRadius: BorderRadius.circular(12.r)),
                               child: Center(
                                 child: Icon(
@@ -177,15 +181,16 @@ class _RegistrationScreenState extends State<RegistrationScreen> {
                                 controller: _passwordController,
                                 obscureText: _obscureText,
                                 decoration: InputDecoration(
-                                  hintText: "password must be 6 character",
+                                  hintText: "Kata Sandi",
                                   hintStyle: TextStyle(
                                     fontSize: 14.sp,
                                     color: const Color(0xFF414041),
                                   ),
-                                  labelText: 'PASSWORD',
+                                  labelText: 'Kata Sandi',
                                   labelStyle: TextStyle(
                                     fontSize: 15.sp,
-                                    color: AppColors.deep_orange,
+                                    color:
+                                        const Color.fromARGB(255, 22, 20, 141),
                                   ),
                                   suffixIcon: _obscureText == true
                                       ? IconButton(
@@ -225,12 +230,13 @@ class _RegistrationScreenState extends State<RegistrationScreen> {
                               signUp();
                             },
                             child: Text(
-                              "Continue",
+                              "Lanjutkan ",
                               style: TextStyle(
-                                  color: Colors.white, fontSize: 18.sp),
+                                  color: Colors.white, fontSize: 15.sp),
                             ),
                             style: ElevatedButton.styleFrom(
-                              backgroundColor: AppColors.deep_orange,
+                              backgroundColor:
+                                  const Color.fromARGB(255, 22, 20, 141),
                               elevation: 3,
                             ),
                           ),
@@ -241,7 +247,7 @@ class _RegistrationScreenState extends State<RegistrationScreen> {
                         Wrap(
                           children: [
                             Text(
-                              "Don't have an account?",
+                              "Sudah memiliki akun ?",
                               style: TextStyle(
                                 fontSize: 13.sp,
                                 fontWeight: FontWeight.w600,
@@ -250,18 +256,19 @@ class _RegistrationScreenState extends State<RegistrationScreen> {
                             ),
                             GestureDetector(
                               child: Text(
-                                " Sign In",
+                                " masuk",
                                 style: TextStyle(
                                   fontSize: 13.sp,
                                   fontWeight: FontWeight.w600,
-                                  color: AppColors.deep_orange,
+                                  color: const Color.fromARGB(255, 22, 20, 141),
                                 ),
                               ),
                               onTap: () {
                                 Navigator.push(
                                     context,
                                     CupertinoPageRoute(
-                                        builder: (context) => const LoginScreen()));
+                                        builder: (context) =>
+                                            const LoginScreen()));
                               },
                             )
                           ],

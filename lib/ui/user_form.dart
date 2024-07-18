@@ -1,7 +1,6 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
-import 'package:tugas_besar/const/appcolors.dart';
 import 'package:tugas_besar/ui/bottom_nav_controller.dart';
 import 'package:tugas_besar/widgets/customButton.dart';
 import 'package:tugas_besar/widgets/mytextfield.dart';
@@ -20,7 +19,7 @@ class _UserFormState extends State<UserForm> {
   final TextEditingController _dobController = TextEditingController();
   final TextEditingController _genderController = TextEditingController();
   final TextEditingController _ageController = TextEditingController();
-  List<String> gender = ["Male", "Female", "Other"];
+  List<String> gender = ["Laki - Laki", "Perempuan"];
 
   Future<void> _selectDateFromPicker(BuildContext context) async {
     final DateTime? picked = await showDatePicker(
@@ -73,12 +72,14 @@ class _UserFormState extends State<UserForm> {
                   height: 20.h,
                 ),
                 Text(
-                  "Submit the form to continue.",
-                  style:
-                      TextStyle(fontSize: 22.sp, color: AppColors.deep_orange),
+                  "Daftar",
+                  style: TextStyle(
+                    fontSize: 22.sp,
+                    color: const Color.fromARGB(255, 22, 20, 141),
+                  ),
                 ),
                 Text(
-                  "We will not share your information with anyone.",
+                  "Kami tidak akan membagikan data anda kepada siapapun",
                   style: TextStyle(
                     fontSize: 14.sp,
                     color: const Color(0xFFBBBBBB),
@@ -88,14 +89,14 @@ class _UserFormState extends State<UserForm> {
                   height: 15.h,
                 ),
                 mytextfield(
-                    "enter your name", TextInputType.text, _nameController),
-                mytextfield("enter your phone number", TextInputType.number,
-                    _phoneController),
+                    "Nama Pengguna", TextInputType.text, _nameController),
+                mytextfield(
+                    "Nomor Telepon", TextInputType.number, _phoneController),
                 TextField(
                   controller: _dobController,
                   readOnly: true,
                   decoration: InputDecoration(
-                    hintText: "date of birth",
+                    hintText: "Tanggal Lahir",
                     suffixIcon: IconButton(
                       onPressed: () => _selectDateFromPicker(context),
                       icon: const Icon(Icons.calendar_today_outlined),
@@ -106,7 +107,7 @@ class _UserFormState extends State<UserForm> {
                   controller: _genderController,
                   readOnly: true,
                   decoration: InputDecoration(
-                    hintText: "choose your gender",
+                    hintText: "Usia saat ini",
                     prefixIcon: DropdownButton<String>(
                       items: gender.map((String value) {
                         return DropdownMenuItem<String>(
@@ -124,14 +125,14 @@ class _UserFormState extends State<UserForm> {
                   ),
                 ),
                 mytextfield(
-                    "enter your age", TextInputType.number, _ageController),
+                    "Usia saat ini", TextInputType.number, _ageController),
 
                 SizedBox(
                   height: 50.h,
                 ),
 
                 // elevated button
-                customButton("Continue", () => sendUserDataToDB()),
+                customButton("Lanjutkan", () => sendUserDataToDB()),
               ],
             ),
           ),

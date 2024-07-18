@@ -1,7 +1,6 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:tugas_besar/const/appcolors.dart';
 import 'package:tugas_besar/ui/bottom_nav_controller.dart';
 import 'package:tugas_besar/ui/registration_screen.dart';
 import 'package:tugas_besar/widgets/customButton.dart';
@@ -20,29 +19,25 @@ class _LoginScreenState extends State<LoginScreen> {
   final TextEditingController _passwordController = TextEditingController();
   bool _obscureText = true;
 
-  signIn()async{
+  signIn() async {
     try {
-      UserCredential userCredential = await FirebaseAuth.instance.signInWithEmailAndPassword(
-          email: _emailController.text,
-          password: _passwordController.text
-      );
+      UserCredential userCredential = await FirebaseAuth.instance
+          .signInWithEmailAndPassword(
+              email: _emailController.text, password: _passwordController.text);
       var authCredential = userCredential.user;
       // ignore: avoid_print
       print(authCredential!.uid);
-      if(authCredential.uid.isNotEmpty){
-        Navigator.push(context, CupertinoPageRoute(builder: (_)=>const BottomNavController()));
-      }
-      else{
+      if (authCredential.uid.isNotEmpty) {
+        Navigator.push(context,
+            CupertinoPageRoute(builder: (_) => const BottomNavController()));
+      } else {
         Fluttertoast.showToast(msg: "Something is wrong");
       }
-
     } on FirebaseAuthException catch (e) {
       if (e.code == 'user-not-found') {
         Fluttertoast.showToast(msg: "No user found for that email.");
-
       } else if (e.code == 'wrong-password') {
         Fluttertoast.showToast(msg: "Wrong password provided for that user.");
-
       }
     } catch (e) {
       // ignore: avoid_print
@@ -53,7 +48,7 @@ class _LoginScreenState extends State<LoginScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: AppColors.deep_orange,
+      backgroundColor: const Color.fromARGB(255, 22, 20, 141),
       body: SafeArea(
         child: Column(
           children: [
@@ -74,7 +69,7 @@ class _LoginScreenState extends State<LoginScreen> {
                       ),
                     ),
                     Text(
-                      "Sign In",
+                      "Masuk",
                       style: TextStyle(fontSize: 22.sp, color: Colors.white),
                     ),
                   ],
@@ -102,12 +97,14 @@ class _LoginScreenState extends State<LoginScreen> {
                           height: 20.h,
                         ),
                         Text(
-                          "Welcome Back",
+                          "Selamat Datang!",
                           style: TextStyle(
-                              fontSize: 22.sp, color: AppColors.deep_orange),
+                            fontSize: 22.sp,
+                            color: const Color.fromARGB(255, 22, 20, 141),
+                          ),
                         ),
                         Text(
-                          "Glad to see you back my buddy.",
+                          "Sepatu berkualitas asal Balikpapan",
                           style: TextStyle(
                             fontSize: 14.sp,
                             color: const Color(0xFFBBBBBB),
@@ -122,7 +119,7 @@ class _LoginScreenState extends State<LoginScreen> {
                               height: 48.h,
                               width: 41.w,
                               decoration: BoxDecoration(
-                                  color: AppColors.deep_orange,
+                                  color: const Color.fromARGB(255, 22, 20, 141),
                                   borderRadius: BorderRadius.circular(12.r)),
                               child: Center(
                                 child: Icon(
@@ -139,15 +136,16 @@ class _LoginScreenState extends State<LoginScreen> {
                               child: TextField(
                                 controller: _emailController,
                                 decoration: InputDecoration(
-                                  hintText: "thed9954@gmail.com",
+                                  hintText: "user@gmail.com",
                                   hintStyle: TextStyle(
                                     fontSize: 14.sp,
                                     color: const Color(0xFF414041),
                                   ),
-                                  labelText: 'EMAIL',
+                                  labelText: 'E-mail',
                                   labelStyle: TextStyle(
                                     fontSize: 15.sp,
-                                    color: AppColors.deep_orange,
+                                    color:
+                                        const Color.fromARGB(255, 22, 20, 141),
                                   ),
                                 ),
                               ),
@@ -163,7 +161,7 @@ class _LoginScreenState extends State<LoginScreen> {
                               height: 48.h,
                               width: 41.w,
                               decoration: BoxDecoration(
-                                  color: AppColors.deep_orange,
+                                  color: const Color.fromARGB(255, 22, 20, 141),
                                   borderRadius: BorderRadius.circular(12.r)),
                               child: Center(
                                 child: Icon(
@@ -181,15 +179,16 @@ class _LoginScreenState extends State<LoginScreen> {
                                 controller: _passwordController,
                                 obscureText: _obscureText,
                                 decoration: InputDecoration(
-                                  hintText: "password must be 6 character",
+                                  hintText: "Kata Sandi",
                                   hintStyle: TextStyle(
                                     fontSize: 14.sp,
                                     color: const Color(0xFF414041),
                                   ),
-                                  labelText: 'PASSWORD',
+                                  labelText: 'Kata Sandi',
                                   labelStyle: TextStyle(
                                     fontSize: 15.sp,
-                                    color: AppColors.deep_orange,
+                                    color:
+                                        const Color.fromARGB(255, 22, 20, 141),
                                   ),
                                   suffixIcon: _obscureText == true
                                       ? IconButton(
@@ -222,16 +221,19 @@ class _LoginScreenState extends State<LoginScreen> {
                           height: 50.h,
                         ),
                         // elevated button
-                        customButton("Sign In", (){
-                          signIn();
-                        },),
+                        customButton(
+                          "Masuk",
+                          () {
+                            signIn();
+                          },
+                        ),
                         SizedBox(
                           height: 20.h,
                         ),
                         Wrap(
                           children: [
                             Text(
-                              "Don't have an account?",
+                              "Belum memiliki akun ?",
                               style: TextStyle(
                                 fontSize: 13.sp,
                                 fontWeight: FontWeight.w600,
@@ -240,11 +242,11 @@ class _LoginScreenState extends State<LoginScreen> {
                             ),
                             GestureDetector(
                               child: Text(
-                                " Sign Up",
+                                " daftar",
                                 style: TextStyle(
                                   fontSize: 13.sp,
                                   fontWeight: FontWeight.w600,
-                                  color: AppColors.deep_orange,
+                                  color: const Color.fromARGB(255, 22, 20, 141),
                                 ),
                               ),
                               onTap: () {
