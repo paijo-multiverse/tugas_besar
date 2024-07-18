@@ -91,6 +91,7 @@ class _HomeState extends State<Home> {
             AspectRatio(
               aspectRatio: 3.5,
               child: CarouselSlider(
+                
                 items: _carouselImages
                     .map((item) => Padding(
                           padding: const EdgeInsets.only(left: 3, right: 3),
@@ -98,14 +99,15 @@ class _HomeState extends State<Home> {
                             decoration: BoxDecoration(
                               image: DecorationImage(
                                 image: NetworkImage(item),
-                                fit: BoxFit.fitWidth,
+                                fit: BoxFit.fill,
                               ),
                             ),
                           ),
                         ))
                     .toList(),
                 options: CarouselOptions(
-                  autoPlay: false,
+                  autoPlay: true,
+                  autoPlayInterval: const Duration(seconds: 2),
                   enlargeCenterPage: true,
                   viewportFraction: 0.8,
                   enlargeStrategy: CenterPageEnlargeStrategy.height,
@@ -139,9 +141,9 @@ class _HomeState extends State<Home> {
               child: GridView.builder(
                 scrollDirection: Axis.horizontal,
                 itemCount: _products.length,
-                gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
+                gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
                   crossAxisCount: 2,
-                  childAspectRatio: 1,
+                  childAspectRatio: 2 / 2.5,
                 ),
                 itemBuilder: (_, index) {
                   return GestureDetector(
@@ -159,6 +161,7 @@ class _HomeState extends State<Home> {
                             child: Container(
                               color: Colors.yellow,
                               child: Image.network(
+                                fit: BoxFit.cover,
                                 _products[index]["product-img"][0],
                               ),
                             ),
